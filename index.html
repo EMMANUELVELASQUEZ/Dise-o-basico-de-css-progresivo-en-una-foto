@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño con CSS — Progresivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <h1 class="encabezado__titulo">Diseño CSS Progresivo</h1>
+        <p class="encabezado__sub">  Emmanuel Velasquez Geron
+        </p>
+    </header>
+
+    <main class="pasos">
+
+        <!-- PASO 1: Solo la foto, sin nada -->
+        <article class="paso">
+            <div class="paso__numero">01</div>
+            <div class="paso__contenido">
+                <h2 class="paso__titulo">Imagen base</h2>
+                <p class="paso__desc">Se coloca la imagen con fondo transparente sobre un contenedor sin estilos.</p>
+
+                <div class="demo demo--paso1">
+                    <img src="Fondo_de_emaster_eliminado.png" alt="Foto de perfil" class="foto">
+                </div>
+
+                <div class="codigo">
+                    <div class="codigo__barra">
+                        <span class="punto r"></span><span class="punto y"></span><span class="punto g"></span>
+                        <span class="codigo__archivo">styles.css — paso 1</span>
+                    </div>
+                    <pre><code><span class="t-sel">.demo</span> {
+  <span class="t-prop">width</span>: <span class="t-val">260px</span>;
+  <span class="t-prop">height</span>: <span class="t-val">300px</span>;
+  <span class="t-prop">position</span>: <span class="t-val">relative</span>;
+  <span class="t-prop">overflow</span>: <span class="t-val">hidden</span>;
+}
+
+<span class="t-sel">.foto</span> {
+  <span class="t-prop">width</span>: <span class="t-val">100%</span>;
+  <span class="t-prop">height</span>: <span class="t-val">100%</span>;
+  <span class="t-prop">object-fit</span>: <span class="t-val">cover</span>;
+  <span class="t-prop">object-position</span>: <span class="t-val">center top</span>;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- PASO 2: Fondo oscuro -->
+        <article class="paso">
+            <div class="paso__numero">02</div>
+            <div class="paso__contenido">
+                <h2 class="paso__titulo">Fondo oscuro — background-color</h2>
+                <p class="paso__desc">Se aplica un color de fondo oscuro al contenedor. La imagen con fondo transparente se integra naturalmente.</p>
+
+                <div class="demo demo--paso2">
+                    <img src="Fondo_de_emaster_eliminado.png" alt="Foto de perfil" class="foto">
+                </div>
+
+                <div class="codigo">
+                    <div class="codigo__barra">
+                        <span class="punto r"></span><span class="punto y"></span><span class="punto g"></span>
+                        <span class="codigo__archivo">styles.css — paso 2</span>
+                    </div>
+                    <pre><code><span class="t-sel">.demo</span> {
+  <span class="t-prop">width</span>: <span class="t-val">260px</span>;
+  <span class="t-prop">height</span>: <span class="t-val">300px</span>;
+  <span class="t-prop">position</span>: <span class="t-val">relative</span>;
+  <span class="t-prop">overflow</span>: <span class="t-val">hidden</span>;
+
+  <span class="t-nuevo">/* Nuevo en este paso */</span>
+  <span class="t-prop">background-color</span>: <span class="t-val">#1a1a1a</span>;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- PASO 3: Grid de puntos -->
+        <article class="paso">
+            <div class="paso__numero">03</div>
+            <div class="paso__contenido">
+                <h2 class="paso__titulo">Textura de puntos — background-image</h2>
+                <p class="paso__desc">Se usa <code>radial-gradient</code> con <code>background-size</code> para crear el patron de cuadricula de puntos del fondo.</p>
+
+                <div class="demo demo--paso3">
+                    <img src="Fondo_de_emaster_eliminado.png" alt="Foto de perfil" class="foto">
+                </div>
+
+                <div class="codigo">
+                    <div class="codigo__barra">
+                        <span class="punto r"></span><span class="punto y"></span><span class="punto g"></span>
+                        <span class="codigo__archivo">styles.css — paso 3</span>
+                    </div>
+                    <pre><code><span class="t-sel">.demo</span> {
+  <span class="t-prop">width</span>: <span class="t-val">260px</span>;
+  <span class="t-prop">height</span>: <span class="t-val">300px</span>;
+  <span class="t-prop">position</span>: <span class="t-val">relative</span>;
+  <span class="t-prop">overflow</span>: <span class="t-val">hidden</span>;
+  <span class="t-prop">background-color</span>: <span class="t-val">#1a1a1a</span>;
+
+  <span class="t-nuevo">/* Nuevo en este paso */</span>
+  <span class="t-prop">background-image</span>: <span class="t-val">radial-gradient(
+    1px 1px at center,
+    #2d2d2d 0%,
+    #2d2d2d 50%,
+    transparent 50%
+  )</span>;
+  <span class="t-prop">background-size</span>: <span class="t-val">18px 18px</span>;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- PASO 4: Llaves con pseudo-elementos -->
+        <article class="paso">
+            <div class="paso__numero">04</div>
+            <div class="paso__contenido">
+                <h2 class="paso__titulo">Llaves { } — ::before y ::after</h2>
+                <p class="paso__desc">Se usan los pseudo-elementos <code>::before</code> y <code>::after</code> del contenedor para dibujar las llaves sin agregar HTML extra.</p>
+
+                <div class="demo demo--paso4">
+                    <img src="Fondo_de_emaster_eliminado.png" alt="Foto de perfil" class="foto">
+                </div>
+
+                <div class="codigo">
+                    <div class="codigo__barra">
+                        <span class="punto r"></span><span class="punto y"></span><span class="punto g"></span>
+                        <span class="codigo__archivo">styles.css — paso 4</span>
+                    </div>
+                    <pre><code><span class="t-nuevo">/* Nuevo en este paso */</span>
+<span class="t-sel">.demo::before</span>,
+<span class="t-sel">.demo::after</span> {
+  <span class="t-prop">content</span>: <span class="t-val">"{"</span>;
+  <span class="t-prop">position</span>: <span class="t-val">absolute</span>;
+  <span class="t-prop">top</span>: <span class="t-val">50%</span>;
+  <span class="t-prop">transform</span>: <span class="t-val">translateY(-50%)</span>;
+  <span class="t-prop">font-family</span>: <span class="t-val">monospace</span>;
+  <span class="t-prop">font-size</span>: <span class="t-val">80px</span>;
+  <span class="t-prop">font-weight</span>: <span class="t-val">900</span>;
+  <span class="t-prop">color</span>: <span class="t-val">#39ff14</span>;
+  <span class="t-prop">z-index</span>: <span class="t-val">1</span>;
+  <span class="t-prop">line-height</span>: <span class="t-val">1</span>;
+}
+
+<span class="t-sel">.demo::before</span> {
+  <span class="t-prop">content</span>: <span class="t-val">"{"</span>;
+  <span class="t-prop">left</span>: <span class="t-val">4px</span>;
+}
+
+<span class="t-sel">.demo::after</span> {
+  <span class="t-prop">content</span>: <span class="t-val">"}"</span>;
+  <span class="t-prop">right</span>: <span class="t-val">4px</span>;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- PASO 5: Glow en las llaves -->
+        <article class="paso">
+            <div class="paso__numero">05</div>
+            <div class="paso__contenido">
+                <h2 class="paso__titulo">Efecto glow — text-shadow</h2>
+                <p class="paso__desc">Se aplica <code>text-shadow</code> a los pseudo-elementos para dar el efecto de brillo neon verde caracteristico de la imagen.</p>
+
+                <div class="demo demo--paso5">
+                    <img src="Fondo_de_emaster_eliminado.png" alt="Foto de perfil" class="foto">
+                </div>
+
+                <div class="codigo">
+                    <div class="codigo__barra">
+                        <span class="punto r"></span><span class="punto y"></span><span class="punto g"></span>
+                        <span class="codigo__archivo">styles.css — paso 5</span>
+                    </div>
+                    <pre><code><span class="t-sel">.demo::before</span>,
+<span class="t-sel">.demo::after</span> {
+  <span class="t-prop">content</span>: <span class="t-val">"{"</span>;
+  <span class="t-prop">position</span>: <span class="t-val">absolute</span>;
+  <span class="t-prop">top</span>: <span class="t-val">50%</span>;
+  <span class="t-prop">transform</span>: <span class="t-val">translateY(-50%)</span>;
+  <span class="t-prop">font-family</span>: <span class="t-val">monospace</span>;
+  <span class="t-prop">font-size</span>: <span class="t-val">80px</span>;
+  <span class="t-prop">font-weight</span>: <span class="t-val">900</span>;
+  <span class="t-prop">color</span>: <span class="t-val">#39ff14</span>;
+  <span class="t-prop">z-index</span>: <span class="t-val">1</span>;
+  <span class="t-prop">line-height</span>: <span class="t-val">1</span>;
+
+  <span class="t-nuevo">/* Nuevo en este paso */</span>
+  <span class="t-prop">text-shadow</span>:
+    <span class="t-val">0 0 10px #39ff14</span>,
+    <span class="t-val">0 0 25px #39ff14</span>,
+    <span class="t-val">0 0 50px #39ff1466</span>;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- PASO 6: Resultado final con border-radius -->
+        <article class="paso paso--final">
+            <div class="paso__numero">06</div>
+            <div class="paso__contenido">
+                <h2 class="paso__titulo">Resultado final — border-radius</h2>
+                <p class="paso__desc">Se redondean las esquinas del contenedor con <code>border-radius</code> para terminar el diseno.</p>
+
+                <div class="demo demo--paso6">
+                    <img src="Fondo_de_emaster_eliminado.png" alt="Foto de perfil" class="foto">
+                </div>
+
+                <div class="codigo">
+                    <div class="codigo__barra">
+                        <span class="punto r"></span><span class="punto y"></span><span class="punto g"></span>
+                        <span class="codigo__archivo">styles.css — resultado final</span>
+                    </div>
+                    <pre><code><span class="t-sel">.demo</span> {
+  <span class="t-prop">width</span>: <span class="t-val">260px</span>;
+  <span class="t-prop">height</span>: <span class="t-val">300px</span>;
+  <span class="t-prop">position</span>: <span class="t-val">relative</span>;
+  <span class="t-prop">overflow</span>: <span class="t-val">hidden</span>;
+  <span class="t-prop">background-color</span>: <span class="t-val">#1a1a1a</span>;
+  <span class="t-prop">background-image</span>: <span class="t-val">radial-gradient(
+    1px 1px at center,
+    #2d2d2d 0%, #2d2d2d 50%,
+    transparent 50%)</span>;
+  <span class="t-prop">background-size</span>: <span class="t-val">18px 18px</span>;
+
+  <span class="t-nuevo">/* Nuevo en este paso */</span>
+  <span class="t-prop">border-radius</span>: <span class="t-val">16px</span>;
+}
+
+<span class="t-sel">.demo::before</span>,
+<span class="t-sel">.demo::after</span> {
+  <span class="t-prop">content</span>: <span class="t-val">"{"</span>;
+  <span class="t-prop">position</span>: <span class="t-val">absolute</span>;
+  <span class="t-prop">top</span>: <span class="t-val">50%</span>;
+  <span class="t-prop">transform</span>: <span class="t-val">translateY(-50%)</span>;
+  <span class="t-prop">font-family</span>: <span class="t-val">monospace</span>;
+  <span class="t-prop">font-size</span>: <span class="t-val">80px</span>;
+  <span class="t-prop">font-weight</span>: <span class="t-val">900</span>;
+  <span class="t-prop">color</span>: <span class="t-val">#39ff14</span>;
+  <span class="t-prop">z-index</span>: <span class="t-val">1</span>;
+  <span class="t-prop">line-height</span>: <span class="t-val">1</span>;
+  <span class="t-prop">text-shadow</span>:
+    <span class="t-val">0 0 10px #39ff14</span>,
+    <span class="t-val">0 0 25px #39ff14</span>,
+    <span class="t-val">0 0 50px #39ff1466</span>;
+}
+
+<span class="t-sel">.demo::before</span> { <span class="t-prop">left</span>: <span class="t-val">4px</span>; }
+<span class="t-sel">.demo::after</span>  {
+  <span class="t-prop">content</span>: <span class="t-val">"}"</span>;
+  <span class="t-prop">right</span>: <span class="t-val">4px</span>;
+}
+
+<span class="t-sel">.foto</span> {
+  <span class="t-prop">position</span>: <span class="t-val">relative</span>;
+  <span class="t-prop">z-index</span>: <span class="t-val">2</span>;
+  <span class="t-prop">width</span>: <span class="t-val">100%</span>;
+  <span class="t-prop">height</span>: <span class="t-val">100%</span>;
+  <span class="t-prop">object-fit</span>: <span class="t-val">cover</span>;
+  <span class="t-prop">object-position</span>: <span class="t-val">center top</span>;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="pie">
+        <p>Actividad video de youtube: Diseño CSS Progresivo — HTML5 + CSS3</p>
+    </footer>
+
+</body>
+</html>

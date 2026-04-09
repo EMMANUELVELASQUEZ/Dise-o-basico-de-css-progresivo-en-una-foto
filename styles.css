@@ -1,0 +1,393 @@
+/* ================================================
+   styles.css
+   Actividad: Diseno CSS Progresivo
+   ================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --verde-neon:  #39ff14;
+    --fondo-card:  #1a1a1a;
+    --punto-color: #2d2d2d;
+    --bg-pagina:   #0a0a0a;
+    --texto:       #f0f0f0;
+    --texto-dim:   #888;
+    --fuente-titulo: 'Syne', sans-serif;
+    --fuente-codigo: 'DM Mono', monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-pagina);
+    color: var(--texto);
+    font-family: var(--fuente-codigo);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* ------------------------------------------------
+   Encabezado de pagina
+------------------------------------------------ */
+.encabezado {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+.encabezado__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--verde-neon);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.encabezado__sub {
+    font-size: 0.9rem;
+    color: var(--texto-dim);
+}
+
+
+/* ------------------------------------------------
+   Lista de pasos
+------------------------------------------------ */
+.pasos {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+
+/* ------------------------------------------------
+   Paso individual
+------------------------------------------------ */
+.paso {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 0 2rem;
+    align-items: start;
+}
+
+.paso--final .paso__numero {
+    color: var(--verde-neon);
+    border-color: var(--verde-neon);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
+}
+
+.paso__numero {
+    font-family: var(--fuente-titulo);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--texto-dim);
+    border: 1px solid #2a2a2a;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+}
+
+.paso__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.paso__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--texto);
+    line-height: 1.2;
+}
+
+.paso__desc {
+    font-size: 0.88rem;
+    color: var(--texto-dim);
+    max-width: 520px;
+}
+
+.paso__desc code {
+    font-family: var(--fuente-codigo);
+    font-size: 0.82em;
+    color: var(--verde-neon);
+    background: rgba(57, 255, 20, 0.08);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+}
+
+
+/* ------------------------------------------------
+   Contenedor demo — base comun
+------------------------------------------------ */
+.demo {
+    width: 260px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.foto {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+
+/* ------------------------------------------------
+   PASO 1 — Solo la imagen, sin fondo
+------------------------------------------------ */
+.demo--paso1 {
+    outline: 1px dashed #2a2a2a;
+}
+
+
+/* ------------------------------------------------
+   PASO 2 — Se agrega background-color
+------------------------------------------------ */
+.demo--paso2 {
+    background-color: var(--fondo-card);
+}
+
+
+/* ------------------------------------------------
+   PASO 3 — Se agrega la textura de puntos
+------------------------------------------------ */
+.demo--paso3 {
+    background-color: var(--fondo-card);
+    background-image: radial-gradient(
+        1px 1px at center,
+        var(--punto-color) 0%,
+        var(--punto-color) 50%,
+        transparent 50%
+    );
+    background-size: 18px 18px;
+}
+
+
+/* ------------------------------------------------
+   PASO 4 — Se agregan las llaves con ::before y ::after
+------------------------------------------------ */
+.demo--paso4 {
+    background-color: var(--fondo-card);
+    background-image: radial-gradient(
+        1px 1px at center,
+        var(--punto-color) 0%,
+        var(--punto-color) 50%,
+        transparent 50%
+    );
+    background-size: 18px 18px;
+}
+
+.demo--paso4::before,
+.demo--paso4::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: monospace;
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--verde-neon);
+    z-index: 1;
+    line-height: 1;
+}
+
+.demo--paso4::before {
+    content: "{";
+    left: 4px;
+}
+
+.demo--paso4::after {
+    content: "}";
+    right: 4px;
+}
+
+
+/* ------------------------------------------------
+   PASO 5 — Se agrega text-shadow (efecto glow)
+------------------------------------------------ */
+.demo--paso5 {
+    background-color: var(--fondo-card);
+    background-image: radial-gradient(
+        1px 1px at center,
+        var(--punto-color) 0%,
+        var(--punto-color) 50%,
+        transparent 50%
+    );
+    background-size: 18px 18px;
+}
+
+.demo--paso5::before,
+.demo--paso5::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: monospace;
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--verde-neon);
+    z-index: 1;
+    line-height: 1;
+    text-shadow:
+        0 0 10px var(--verde-neon),
+        0 0 25px var(--verde-neon),
+        0 0 50px rgba(57, 255, 20, 0.4);
+}
+
+.demo--paso5::before {
+    content: "{";
+    left: 4px;
+}
+
+.demo--paso5::after {
+    content: "}";
+    right: 4px;
+}
+
+
+/* ------------------------------------------------
+   PASO 6 — Resultado final con border-radius
+------------------------------------------------ */
+.demo--paso6 {
+    background-color: var(--fondo-card);
+    background-image: radial-gradient(
+        1px 1px at center,
+        var(--punto-color) 0%,
+        var(--punto-color) 50%,
+        transparent 50%
+    );
+    background-size: 18px 18px;
+    border-radius: 16px;
+}
+
+.demo--paso6::before,
+.demo--paso6::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: monospace;
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--verde-neon);
+    z-index: 1;
+    line-height: 1;
+    text-shadow:
+        0 0 10px var(--verde-neon),
+        0 0 25px var(--verde-neon),
+        0 0 50px rgba(57, 255, 20, 0.4);
+}
+
+.demo--paso6::before {
+    content: "{";
+    left: 4px;
+}
+
+.demo--paso6::after {
+    content: "}";
+    right: 4px;
+}
+
+
+/* ------------------------------------------------
+   Bloque de codigo
+------------------------------------------------ */
+.codigo {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 520px;
+}
+
+.codigo__barra {
+    background: #161b22;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid #21262d;
+}
+
+.codigo__archivo {
+    font-size: 0.75rem;
+    color: #6e7681;
+    margin-left: 6px;
+}
+
+.punto {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.punto.r { background: #ff5f57; }
+.punto.y { background: #febc2e; }
+.punto.g { background: #28c840; }
+
+.codigo pre {
+    padding: 1.25rem;
+    overflow-x: auto;
+    font-family: var(--fuente-codigo);
+    font-size: 0.8rem;
+    line-height: 1.85;
+    color: #e6edf3;
+    margin: 0;
+}
+
+.t-sel   { color: #79c0ff; }
+.t-prop  { color: #7ee787; }
+.t-val   { color: #ff7b72; }
+.t-nuevo { color: #6e7681; font-style: italic; }
+
+
+/* ------------------------------------------------
+   Pie de pagina
+------------------------------------------------ */
+.pie {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: #333;
+    border-top: 1px solid #1a1a1a;
+}
+
+
+/* ------------------------------------------------
+   Responsive
+------------------------------------------------ */
+@media (max-width: 640px) {
+    .paso {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .paso__numero {
+        width: 40px;
+        height: 40px;
+        font-size: 0.7rem;
+    }
+}
